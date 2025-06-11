@@ -71,4 +71,4 @@ def sensor_handle_POST():
 
     return {"response": measurement_id}
 
-app.run("0.0.0.0", 6969)
+app.run("0.0.0.0", 80)
