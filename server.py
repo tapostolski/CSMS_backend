@@ -4,10 +4,10 @@ from datetime import datetime
 from database.db_wrapper import DbConnection
 import json
 from flask_cors import CORS
-from config import login, password
 from flask_basicauth import BasicAuth
 from flask import make_response
 import base64
+import argparse
 
 #initialize flask app
 app = Flask("sensors_app")
@@ -18,8 +18,13 @@ import endpoints
 global_db_connection = DbConnection()
 global_db_connection.create_table()
 
-app.config['BASIC_AUTH_USERNAME'] = login
-app.config['BASIC_AUTH_PASSWORD'] = password
+loginArgParser = argparse.ArgumentParser(description='Sensor App Login Credentials')
+loginArgParser.add_argument('--username', type=str, required=True, help='Username for basic auth')
+loginArgParser.add_argument('--password', type=str, required=True, help='Password for basic auth')
+loginArgs = loginArgParser.parse_args()
+
+app.config['BASIC_AUTH_USERNAME'] = loginArgs.username
+app.config['BASIC_AUTH_PASSWORD'] = loginArgs.password
 #app.config['BASIC_AUTH_FORCE'] = True
 
 basic_auth = BasicAuth(app)
