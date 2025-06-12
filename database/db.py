@@ -1,9 +1,10 @@
 import sqlite3
+from os import getcwd
 
 class BaseDbConnection:
     def __init__(self):
         """initialize mysql db and/or connection"""
-        self.conn = sqlite3.connect('SMM_System.db', check_same_thread=False)
+        self.conn = sqlite3.connect(f'{getcwd()}/SMM_System.db', check_same_thread=False)
         self.cursor = self.conn.cursor()
 
     
