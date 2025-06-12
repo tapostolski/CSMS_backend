@@ -10,7 +10,7 @@ import base64
 import argparse
 
 #initialize flask app
-app = Flask("sensors_app")
+app = Flask("SMM backend")
 CORS(app)
 import endpoints
 
