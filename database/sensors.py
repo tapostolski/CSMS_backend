@@ -61,3 +61,8 @@ class Sensors(BaseDbConnection):
         self.cursor.execute(f'UPDATE Sensors SET {partial_query_string} WHERE sensor_id = {id};')
         self.conn.commit()
 
+    def delete(self, id):
+        """deletes sensor from db"""
+        self.cursor.execute(f'DELETE FROM Sensors WHERE sensor_id = {id};')
+        self.conn.commit()
+

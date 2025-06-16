@@ -118,5 +118,9 @@ class DbConnection(BaseDbConnection):
     def delete_plant(self, id):
         """deletes plant from db"""
         return Plants().delete(id)
+    
+    def delete_sensor(self, id):
+        """deletes sensor from db"""
+        return Sensors().delete(id)
 
 #TODO generate jakistam string from data

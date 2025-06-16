@@ -85,8 +85,7 @@ def plants_PATCH(id):
 @app.route('/api/plants/<id>', methods = ['DELETE'])
 @basic_auth.required
 def plants_DELETE(id):
-    """TODO plants change id"""
-    # input: { "plant_id":plant id, "alert_threshold":alert threshold }
+    """delete plant by id"""
     db_connection = DbConnection()
     db_connection.delete_plant(id)
     return "", 200

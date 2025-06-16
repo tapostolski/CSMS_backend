@@ -36,3 +36,11 @@ def sensors_PATCH(id):
     data = request.json
     db_connection.edit_sensor(id,data)
     return "", 200
+
+@app.route('/api/sensors/<id>', methods = ['DELETE'])
+@basic_auth.required
+def sensors_DELETE(id):
+    """delete sensor by id"""
+    db_connection = DbConnection()
+    db_connection.delete_sensor(id)
+    return "", 200
