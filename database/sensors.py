@@ -20,8 +20,8 @@ class Sensors(BaseDbConnection):
         
     #ADD
     def add_sensor(self, data, timestamp):    
-        """adds sensor to db"""                                                                                            # TODO replace placeholder values
-        self.cursor.execute(f'INSERT INTO Sensors (sensor_id, alert_threshold, last_calibration_date) VALUES ({data["sensor_id"]}, 35,{timestamp});')
+        """adds sensor to db"""                                                                                            
+        self.cursor.execute(f'INSERT INTO Sensors (sensor_id, alert_threshold, last_calibration_date) VALUES ({data["sensor_id"]}, 45,{timestamp});')
         self.conn.commit()
 
         return {"sensor_id":self.cursor.lastrowid}
