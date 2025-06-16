@@ -15,7 +15,7 @@ class Alerts(BaseDbConnection):
 
         return {"alert_id":self.cursor.lastrowid}
     
-    def get(self, id = None, plant_id = None,  limit = 35040, offset = 0, start_date = 0, end_date = datetime.now().timestamp()):
+    def get(self, id = None, plant_id = None,  limit = 35040, offset = 0, start_date = 0, end_date = datetime.now().timestamp(), sort = 'asc'):
         """returns alert if specified by id, if not returns all alerts TODO plantid opis"""
         if id:
             self.cursor.execute(f'SELECT * FROM Alerts WHERE alert_id = {id};')
@@ -25,7 +25,7 @@ class Alerts(BaseDbConnection):
             response = self.cursor.fetchall()
         else:
             print(f'start date: {start_date} end date: {end_date}')
-            self.cursor.execute(f'SELECT * FROM Alerts WHERE date >= {start_date} AND date <= {end_date} LIMIT {offset}, {limit};')
+            self.cursor.execute(f'SELECT * FROM Alerts WHERE date >= {start_date} AND date <= {end_date} ORDER BY alert_id {sort} LIMIT {offset}, {limit};')
             response = self.cursor.fetchall()
             
         return_list = []

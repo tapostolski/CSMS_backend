@@ -18,9 +18,10 @@ def alerts_get_all_GET():
     end_date = request.args.get('end_date', datetime.now().timestamp())
     limit = request.args.get('limit', 35040)
     offset = request.args.get('offset', 0)
+    sort = request.args.get('sort', 'asc')
 
     db_connection = DbConnection()
-    response_json = db_connection.get_alerts(limit = limit, offset = offset, start_date = start_date, end_date = end_date)
+    response_json = db_connection.get_alerts(limit = limit, offset = offset, start_date = start_date, end_date = end_date, sort = sort)
     
     return json.dumps(response_json)
 

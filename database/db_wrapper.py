@@ -100,10 +100,10 @@ class DbConnection(BaseDbConnection):
         return Sensors().get_alert_threshold(id)
     
     # 35040 measurements in year (1 measurement per 15 min)
-    def get_alerts(self, id = None, plant_id = None,  limit = 35040, offset = 0, start_date = 0, end_date = datetime.now().timestamp()):
+    def get_alerts(self, id = None, plant_id = None,  limit = 35040, offset = 0, start_date = 0, end_date = datetime.now().timestamp(), sort = 'asc'):
         """returns alert if specified by id, if not returns all alerts TODO plantid opis"""
         
-        return Alerts().get(id, plant_id, limit, offset, start_date, end_date)
+        return Alerts().get(id, plant_id, limit, offset, start_date, end_date, sort)
 
     #EDDIT
     def edit_sensor(self, id, input_data: dict):
